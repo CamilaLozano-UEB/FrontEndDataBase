@@ -1,0 +1,63 @@
+/*
+Styles for the SingUp interface
+ */
+.signUpBack {
+    background: url("../imgs/3pets.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
+/*
+Border radius for the input fields
+ */
+input {
+    border-radius: 30px;
+}
+
+/*
+Font to the letter
+ */
+select {
+    font-family: Verdana;
+    border-radius: 30px;
+}
+
+/*
+Styles for the select form to create a user interface
+ */
+.SelectForm {
+    font-family: Verdana;
+    color: white;
+    width: 60%;
+    background: #FFFFFF44;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+
+/*
+Styles for the vet sing up interface
+ */
+.VetSingUp {
+    font-family: Verdana;
+    color: white;
+    width: 60%;
+    background: #FFFFFF44;
+    padding: 30px;
+    border-radius: 20px;
+
+}
+
+/*
+Styles for the forms
+ */
+fieldset {
+    border-color: transparent;
+}
+
+/*Style for the register button*/
+#createButton {
+    font-family: Verdana;
+    background-color: #dcdde1;
+    border-color: #dcdde1;
+    border-radius: 18px;
+}
