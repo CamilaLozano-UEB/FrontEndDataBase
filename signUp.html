@@ -6,23 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="CSS/signUp.css" type="text/css">
     <script src="Javascript/signUp.js" type="module"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="signUpBack">
 
-<!--Selection of the role to create a new user-->
-<div class="SelectForm">
-    <label for="listSingUp"> Seleccione rol: </label>
-    <select name="listSingUp" id="listSingUp">
-        <option value="selectoption">Seleccione</option>
-        <option value="vetSelect">Veterinaria</option>
-        <option value="ownerSelect">Propietario</option>
-    </select>
-</div>
-<div class="VetSingUp">
+
+<div class="signUp">
 
     <!-- Form to create a new user-->
     <form id="formSingUp" name="formSingUp" method="get">
-        <fieldset id="fieldSetForm" name="fieldSetFormSingUp"></fieldset>
+        <fieldset id="fieldSetForm" name="fieldSetFormSignUp">
+            <div>
+                <label for="username">Nombre de usuario:</label>
+                <br>
+                <input name="username" id="username">
+                <br>
+                <label for="password1">Contraseña:</label>
+                <br>
+                <input type="password" name="password1" id="password1">
+                <br>
+                <label for="password2">Confirmar contraseña:</label>
+                <br>
+                <input type="password" name="password2" id="password2">
+                <br>
+                <label for="nombres">Nombres:</label>
+                <br>
+                <input name="nombres" id="nombres">
+                <br>
+                <label for="apellidos">Apellidos:</label>
+                <br>
+                <input name="apellidos" id="apellidos">
+                <br>
+                <label for="numIdentificacion">Número de identificación:</label>
+                <br>
+                <input name="numIdentificacion" id="numIdentificacion">
+                <br>
+                <label for="email">email:</label>
+                <br>
+                <input name="email" type="email" id="email">
+                <br>
+                <label for="direccion">Dirección:</label>
+                <br>
+                <input name="direccion" id="direccion">
+                <br>
+                <label for="celular">Teléfono celular:</label>
+                <br>
+                <input name="celular" type="number" id="celular">
+                <br>
+                <label for="telefono">Teléfono fijo:</label>
+                <br>
+                <input name="telefono" type="number" id="telefono">
+            </div>
+        </fieldset>
+        <button id="signButton" type="button">Registrar</button>
     </form>
 </div>
 </body>
