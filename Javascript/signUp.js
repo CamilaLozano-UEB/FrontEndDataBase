@@ -1,3 +1,17 @@
+$(function(){
+    /*var url = 'http://127.0.0.1:8000/rol';
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.text()).then(res => console.log(res));
+    */
+});
+
+
+
+
 $("#signButton").click(function(){
     //Takes and send the data to create a new owner user
     if (document.formSingUp.neighborhood[document.formSingUp.neighborhood.selectedIndex].text === "Seleccione") {
