@@ -1,59 +1,49 @@
-$(function(){
-    /*var url = 'http://127.0.0.1:8000/rol';
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
+$(function () {
+    $("#signButton").click(function () {
+
+        var url = 'http://127.0.0.1:8000/usuarios';
+        var password = $("#password").val();
+        var encryptedPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
+        var tel_fijo = $("#telefono").val();
+        var tel_celular = $("#celular").val();
+
+        if (isNaN(Number(tel_celular)) || isNaN(Number(tel_fijo))) {
+            alert("Solo ingrese números en los campos de teléfono!")
+            return;
         }
-    }).then(res => res.text()).then(res => console.log(res));
-    */
+        console.log(password)
+        var usuario = {
+            "username": $("#username").val(),
+            "clave": encryptedPassword,
+            "email": $("#email").val(),
+            "num_identificacion": $("#numIdentificacion").val(),
+            "nombres": $("#nombres").val(),
+            "apellidos": $("#apellidos").val(),
+            "cod_rol": 1,
+            "direccion": $("#direccion").val(),
+            "tel_fijo": tel_fijo,
+            "tel_celular": tel_celular,
+            "est_usuario": "A"
+        }
+        console.log(usuario);
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: JSON.stringify(usuario),
+            dataType: "json",
+            success: function (data) {
+                console.log(data)
+                if ("se ha registrado correctamente" === data) {
+                    alert(data);
+                    window.location.href = "index.html";
+                } else {
+                    alert(data);
+                    location.reload();
+                }
+            },
+            error: function(err){
+                alert("Ha acurrido un error al registrarse");
+            }
+        });
+    });
 });
-
-
-
-
-$("#signButton").click(function(){
-    //Takes and send the data to create a new owner user
-    if (document.formSingUp.neighborhood[document.formSingUp.neighborhood.selectedIndex].text === "Seleccione") {
-        alert("Es necesario selecionar una localidad");
-        return;
-    }
-
-    var url = 'http://35.206.97.221:8080/FourPawsCitizens-FootprintsSystem-1.0-SNAPSHOT/api/owners';
-    var person_id = Number(document.getElementById("person_id").value)
-    if (isNaN(person_id)) {
-        alert("La identificación debe ser numerica");
-        return;
-    }
-    var data = {
-        "username": document.getElementById("username").value,
-        "password": document.getElementById("password").value,
-        "email": document.getElementById("email").value,
-        "person_id": person_id,
-        "name": document.getElementById("name").value,
-        "address": document.getElementById("address").value,
-        "neighborhood": document.formSingUp.neighborhood[document.formSingUp.neighborhood.selectedIndex].text
-    };
-
-    fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data), // data can be `string` or {object}!
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(res => res.text()).then(res => validateResponseOwner(res));
-})
-
-/**
- * Function that validates the correct fields to the creation of the owner's user
- * @param res String message
- */
-function validateResponseOwner(res) {
-    if ("se ha registrado correctamente" === res) {
-        alert("Se creo el propietario correctamente");
-        window.location.href = "index.html";
-    } else {
-        alert("Ocurre un problema al crear el propietario, revise los datos ");
-        location.reload();
-    }
-}

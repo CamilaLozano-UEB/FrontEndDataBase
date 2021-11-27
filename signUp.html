@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="CSS/signUp.css" type="text/css">
     <script src="Javascript/signUp.js" type="module"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/libs/sha256.js"></script>
+    <script type="text/javascript" src="/libs/hmac-sha256.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body class="signUpBody">
-
 <h1 align="center">Registro de usuarios</h1>
 <br>
 <form id="formSingUp" name="formSingUp" method="get">
@@ -45,13 +46,13 @@
         <br><br>
         <label for="celular">Teléfono celular</label>
         <br>
-        <input name="celular" type="number" id="celular">
+        <input name="celular" id="celular">
         <br><br>
         <label for="telefono">Teléfono fijo</label>
         <br>
-        <input name="telefono" type="number" id="telefono">
+        <input name="telefono" id="telefono">
         <br><br>
-        <button id="signButton" type="button">Registrar</button>
+            <button id="signButton" type="button">Registrar</button>
     </fieldset>
 </form>
 
