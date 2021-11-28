@@ -373,6 +373,7 @@ $(function () {
     function caseVisitButtonConfiguration(button) {
         button.type = "button";
         button.textContent = "Ver casos y visitas";
+        button.textContent = "Ver casos y visitas";
         button.href = "#CaseAndVisits";
         button.setAttribute("data-toggle", "tab");
 
