@@ -1,9 +1,12 @@
 $(function () {
-    const admin_url = "http://127.0.0.1:8000/admin";
+    if (!rutas.enabled) {
+        return;
+    }
+    const admin_url = rutas.admin;
+    const usuario_url = rutas.usuario;
 
     $("#signButton").click(function () {
 
-        var url = 'http://127.0.0.1:8000/usuarios';
         var password = $("#password").val();
         var encryptedPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
         var tel_fijo = $("#telefono").val();
@@ -27,14 +30,13 @@ $(function () {
             "est_usuario": "A"
         }
         $.ajax({
-            url: url,
+            url: usuario_url,
             type: "POST",
             data: JSON.stringify(usuario),
             dataType: "json",
             success: function (data) {
                 if ("se ha registrado correctamente" === data) {
                     alert(data);
-                    window.location.href = "index.html";
                 } else {
                     alert(data);
                     location.reload();
@@ -52,11 +54,11 @@ $(function () {
             alert("No hay registros de veterinarios!")
             return;
         }
-        let table = document.getElementById("myTableOwner");
+        let table = document.getElementById("vetTable");
         const properties = ['username', 'nombres', "apellidos", "num_identificacion", "email", "direccion", "tel_fijo", "tel_celular"]
 
         if (document.getElementById("tBodyPets") !== null) {
-            $('#myTableOwner').DataTable().destroy();
+            $('#vetTable').DataTable().destroy();
             table.removeChild(document.getElementById("tBodyPets"));
         }
         let tBody = document.createElement("tbody");
@@ -82,7 +84,7 @@ $(function () {
 
         }
         table.appendChild(tBody);
-        $('#myTableOwner').DataTable({ /* Disable initial sort */ "aaSorting": []});
+        $('#vetTable').DataTable({ /* Disable initial sort */ "aaSorting": []});
     }
 
     /**

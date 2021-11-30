@@ -5,7 +5,9 @@
     <title>FourPawsCitizens - SingUp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="CSS/signUp.css" type="text/css">
-    <script src="Javascript/admin.js" type="module"></script>
+    <script src="Javascript/admin/admin.js" type="module"></script>
+    <script src="Javascript/admin/especializacion.js" type="module"></script>
+    <script src="resources/config.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="/libs/sha256.js"></script>
     <script type="text/javascript" src="/libs/hmac-sha256.js"></script>
@@ -26,11 +28,15 @@
         </li>
         <li class="nav-item">
             <a class="nav-link active" id="register-tab" data-toggle="tab" href="#register" role="tab"
-               aria-controls="register" aria-selected="true">Registrar Mascota</a>
+               aria-controls="register" aria-selected="true">Registrar Veterinario</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="update-tab" data-toggle="tab" href="#update" role="tab" aria-controls="update"
-               aria-selected="false">Actualizar Mascota</a>
+               aria-selected="false">Veterinarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="petCase-tab" data-toggle="tab" href="#petCase" role="tab" aria-controls="petCase"
+               aria-selected="false">Crear Especialización</a>
         </li>
     </ul>
 </nav>
@@ -90,7 +96,7 @@
         <div class="configureStyleMainForms">
 
             <h2 class="titles">Veterinarios registrados</h2>
-            <table id="myTableOwner" class="display" style="width:100%">
+            <table id="vetTable" class="display" style="width:100%">
                 <thead>
                 <tr>
                     <th scope="col">Usuario</th>
@@ -102,6 +108,46 @@
                     <th scope="col">Teléfono</th>
                     <th scope="col">Celular</th>
                     <th scope="col">Eliminar</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="petCase" role="tabpanel" aria-labelledby="petCase-tab" align="center">
+        <div class="configureStyleMainForms">
+            <!--Form for the creation of a case -->
+            <form name="formCase" autocomplete="on" id="formCase">
+                <fieldset>
+                    <legend>Registro de especializaciones</legend>
+                    <label for="nombreEsp">Nombre de la especialización</label><br>
+                    <input id="nombreEsp" type="text" name="nombreEsp" required>
+                    <br><br>
+                    <p align="center">
+                        <button type="button" id="espButton">Registrar</button>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="find" role="tabpanel" aria-labelledby="find-tab" align="center">
+        <div class="configureStyleMainBox">
+
+            <!-- Table to shows all the vets for an specific owner -->
+            <h2 class="titles">Tabla de Mascotas del Propietario</h2>
+            <table id="myTableOwner" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th scope="col">Actualizar</th>
+                    <th scope="col">Crear Caso</th>
+                    <th scope="col">Ver casos y visitas</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">microchip</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">especie</th>
+                    <th scope="col">raza</th>
+                    <th scope="col">tamaño</th>
+                    <th scope="col">sexo</th>
+                    <th scope="col">imagen</th>
                 </tr>
                 </thead>
             </table>
