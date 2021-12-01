@@ -7,6 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="Javascript/veterinario/color.js" type="module"></script>
+    <script src="Javascript/veterinario/categoria.js" type="module"></script>
+    <script src="Javascript/veterinario/especie.js" type="module"></script>
+    <script src="Javascript/veterinario/raza.js" type="module"></script>
+    <script src="resources/config.js"></script>
+    <link rel="stylesheet" href="CSS/signUp.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -27,10 +33,8 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="Javascript/cliente.js" type="module"></script>
-    <link rel="stylesheet" href="CSS/cliente.css" type="text/css">
 </head>
-<!-- Navigation of the owner interface -->
+
 <nav>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
@@ -43,20 +47,24 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" id="petCase-tab" data-toggle="tab" href="#petCase" role="tab" aria-controls="petCase"
-               aria-selected="false">Crear Caso</a>
+               aria-selected="false">Especies</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="find-tab" data-toggle="tab" href="#find" role="tab" aria-controls="find"
-               aria-selected="false">Tabla de Mascotas</a>
+            <a class="nav-link" id="raza-tab" data-toggle="tab" href="#registroRaza" role="tab" aria-controls="find"
+               aria-selected="false">Razas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="CaseAndVisits-tab" data-toggle="tab" href="#CaseAndVisits" role="tab"
+            <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
                aria-controls="CaseAndVisits"
-               aria-selected="false">Tabla de casos y visitas por mascota</a>
+               aria-selected="false">Categorias</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="producto-tab" data-toggle="tab" href="#registroProducto" role="tab" aria-controls="find"
+               aria-selected="false">Productos</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="Upuser-tab" data-toggle="tab" href="#Upuser" role="tab" aria-controls="Upuser"
-               aria-selected="false">Cambiar datos de propietario</a>
+               aria-selected="false">Colores</a>
         </li>
     </ul>
 </nav>
@@ -193,148 +201,84 @@
     </div>
     <div class="tab-pane fade" id="petCase" role="tabpanel" aria-labelledby="petCase-tab" align="center">
         <div class="configureStyleMainForms">
-            <!--Form for the creation of a case -->
-            <form name="formCase" autocomplete="off" id="formCase">
+            <form name="formEspecie" autocomplete="on" id="formEspecie">
                 <fieldset>
-                    <legend> Crear Caso</legend>
-                    <label for="petidC">ID de la mascota:</label><br>
-                    <input id="petidC" type="text" name="petidC" disabled required>
-                    <br>
-                    <br>
-                    <label for="caseDate"> Fecha del caso</label><br>
-                    <input type="Date" name="caseDate" size="30" id="caseDate" required>
-                    <br>
-                    <br>
-                    <label for="typeCase">Tipo de caso:</label><br>
-                    <select id="typeCase" name="typeCase" required>
-                        <option value="" selected="selected">Seleccione</option>
-                        <option value="2">Perdida</option>
-                        <option value="3">Robo</option>
-                        <option value="4">Fallecimiento</option>
-                    </select>
-                    <br>
-                    <br>
-                    <label for="description">Descripción:</label><br>
-                    <input type="text" name="description" size="30" id="description" placeholder="Ej: La mascota estaba"
-                           required>
-                    <br>
-                    <br>
-
+                    <legend>Añadir especie</legend>
+                    <label for="nombreEspecie">nombre</label><br>
+                    <input id="nombreEspecie" type="text" name="nombreEspecie" required>
+                    <br><br>
                     <p align="center">
-                        <button type="button" id="caseB">Crear Caso</button>
+                        <button type="button" id="especieButton">Registrar</button>
                     </p>
                 </fieldset>
             </form>
         </div>
     </div>
-    <div class="tab-pane fade" id="find" role="tabpanel" aria-labelledby="find-tab" align="center">
+    <div class="tab-pane fade" id="registroRaza" role="tabpanel" aria-labelledby="raza-tab" align="center">
         <div class="configureStyleMainBox">
-
-            <!-- Table to shows all the vets for an specific owner -->
-            <h2 class="titles">Tabla de Mascotas del Propietario</h2>
-            <table id="myTableOwner" class="display" style="width:100%">
-                <thead>
-                <tr>
-                    <th scope="col">Actualizar</th>
-                    <th scope="col">Crear Caso</th>
-                    <th scope="col">Ver casos y visitas</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">microchip</th>
-                    <th scope="col">nombre</th>
-                    <th scope="col">especie</th>
-                    <th scope="col">raza</th>
-                    <th scope="col">tamaño</th>
-                    <th scope="col">sexo</th>
-                    <th scope="col">imagen</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="tab-pane fade" id="CaseAndVisits" role="tabpanel" aria-labelledby="CaseAndVisits-tab" align="center">
-        <div class="configureStyleMainBox">
-            <!-- Table to list all cases and visits of an owner's pets-->
-            <h3 class="titles">Busqueda de casos y visitas por fechas</h3>
-            <h5>Filtrar</h5>
-            <!-- Name and date filters for the cases and visits table-->
-            <form name="formTCV" id="formTCV">
-                <label for="petIdCV">ID de la mascota:</label><br>
-                <input type="text" name="petIdCV" id="petIdCV" size="20" disabled required>
-                <br>
-                <br>
-                <label for="Date1"> Primer rango de fecha</label><br>
-                <input type="Date" name="Date1" size="30" id="Date1" required>
-                <br>
-                <br>
-                <label for="Date2"> Segundo rango de fecha</label><br>
-                <input type="Date" name="Date2" size="30" id="Date2" required>
-                <br>
-                <br>
-                <button class="btn btn-rounded btn-primary" id="filter" type="button">Filtrar</button>
+            <form name="formRaza" autocomplete="on" id="vetEsp">
+                <fieldset>
+                    <legend>Registro de nuevas razas</legend>
+                    <label for="selectEsp">Especie</label><br>
+                    <p align="center">
+                        <select id="selectEsp" name="selectEsp">
+                        </select>
+                    </p>
+                    <label for="registroRaza">Raza</label><br>
+                    <input id="raza" type="text" name="raza" required>
+                    <br><br>
+                    <p align="center">
+                        <button type="button" id="butRegistroRaza">Añadir</button>
+                    </p>
+                </fieldset>
             </form>
-
-            <br>
-            <div id="OwnerTableVisitsCase" align="center">
-                <table id="myTableCaseVisitOwner" class="display">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Caso o Visita</th>
-                        <th scope="col">ID del Caso o Visita</th>
-                        <th scope="col">Nombre de la Mascota</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">descripción</th>
-                        <th scope="col">Nombre de la Veterinaria</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
         </div>
     </div>
-
+    <div class="tab-pane fade" id="categoria" role="tabpanel" aria-labelledby="CaseAndVisits-tab" align="center">
+        <div class="configureStyleMainBox">
+            <form name="formCategoria" autocomplete="on" id="formCategoria">
+                <fieldset>
+                    <legend>Añadir categoria</legend>
+                    <label for="nombreCategoria">nombre</label><br>
+                    <input id="nombreCategoria" type="text" name="nombreCategoria" required>
+                    <br><br>
+                    <p align="center">
+                        <button type="button" id="categoriaButton">Registrar</button>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="registroProducto" role="tabpanel" aria-labelledby="producto-tab" align="center">
+        <div class="configureStyleMainBox">
+            <form name="formProducto" autocomplete="on" id="formProducto">
+                <fieldset>
+                    <legend>Registro de productos</legend>
+                    <label for="selectEsp">Especie</label><br>
+                    <p align="center">
+                        <select id="selectCategoria" name="selectEsp">
+                        </select>
+                    </p>
+                    <label for="producto">Raza</label><br>
+                    <input id="producto" type="text" name="producto" required>
+                    <br><br>
+                    <p align="center">
+                        <button type="button" id="butRegistroProducto">Añadir</button>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
     <div class="tab-pane fade" id="Upuser" role="tabpanel" aria-labelledby="Upuser-tab" align="center">
         <div class="configureStyleMainForms">
-            <!--Form to update the owner's data-->
-            <form name="formUser" autocomplete="off" id="formUser">
+            <form name="formPago" autocomplete="on" id="formPago">
                 <fieldset>
-                    <legend> Formulario de Actualizar Datos del Propietario</legend>
-                    <br>
-                    <label for="neighborhoodUser">Seleccione la localidad:</label><br>
-                    <select id="neighborhoodUser" name="neighborhoodUser" required>
-                        <option value="" selected="selected">Seleccione</option>
-                        <option value="2">Usaquen</option>
-                        <option value="3">Chapinero</option>
-                        <option value="4">Santa Fe</option>
-                        <option value="5">San Cristobal</option>
-                        <option value="6">Usme</option>
-                        <option value="7">Tunjuelito</option>
-                        <option value="8">Bosa</option>
-                        <option value="9">Kennedy</option>
-                        <option value="10">Fontibon</option>
-                        <option value="11">Engativa</option>
-                        <option value="12">Suba</option>
-                        <option value="13">Barrios Unidos</option>
-                        <option value="14">Teusaquillo</option>
-                        <option value="15">Los Martires</option>
-                        <option value="16">Antonio Nariño</option>
-                        <option value="17">Puente Aranda</option>
-                        <option value="18">La Candelaria</option>
-                        <option value="19">Uribe</option>
-                        <option value="20">Ciudad Bolivar</option>
-                        <option value="21">Sumapaz</option>
-                        <option value="22">Municipios aledaños</option>
-                    </select>
-                    <br>
-                    <br>
-                    <label for="addressUser">Digite la dirección:</label><br>
-                    <input type="text" name="addressUser" size="30" id="addressUser" placeholder="Ej: Cr 7 # 100 - 10"
-                           required>
-                    <br>
-                    <br>
-
+                    <legend>Añadir color</legend>
+                    <label for="nombreColor">nombre</label><br>
+                    <input id="nombreColor" type="text" name="nombreColor" required>
+                    <br><br>
                     <p align="center">
-                        <button type="button" id="Uuser">Actualizar datos</button>
+                        <button type="button" id="colorButton">Registrar</button>
                     </p>
                 </fieldset>
             </form>

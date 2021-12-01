@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="CSS/signUp.css" type="text/css">
     <script src="Javascript/admin/admin.js" type="module"></script>
     <script src="Javascript/admin/especializacion.js" type="module"></script>
+    <script src="Javascript/admin/medioPago.js" type="module"></script>
     <script src="resources/config.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="/libs/sha256.js"></script>
@@ -22,11 +23,6 @@
 <nav>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a id="LoginButton" href='index.html'>
-                <!--<img src="imgs/home.png" width="40px" height="40px">-->
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link active" id="register-tab" data-toggle="tab" href="#register" role="tab"
                aria-controls="register" aria-selected="true">Registrar Veterinario</a>
         </li>
@@ -40,7 +36,11 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" id="esp-tab" data-toggle="tab" href="#find" role="tab" aria-controls="find"
-               aria-selected="false">Tabla de Mascotas</a>
+               aria-selected="false">Ver especializaciones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="medpag-tab" data-toggle="tab" href="#medpago" role="tab" aria-controls="find"
+               aria-selected="false">Ingresar medio de pago</a>
         </li>
     </ul>
 </nav>
@@ -158,6 +158,8 @@
                     </p>
                 </fieldset>
             </form>
+            <br>
+            <h3>Especializaciones</h3>
             <table id="especializacionTable" class="display" style="width:100%">
                 <thead>
                 <tr>
@@ -166,6 +168,21 @@
                 </tr>
                 </thead>
             </table>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="medpago" role="tabpanel" aria-labelledby="medpago-tab" align="center">
+        <div class="configureStyleMainForms">
+            <form name="formPago" autocomplete="on" id="formPago">
+                <fieldset>
+                    <legend>Registro de medios de pago</legend>
+                    <label for="nombreMedpago">Nombre del medio de pago</label><br>
+                    <input id="nombreMedpago" type="text" name="nombreMedpago" required>
+                    <br><br>
+                    <p align="center">
+                        <button type="button" id="medpagoButton">Registrar</button>
+                    </p>
+                </fieldset>
+            </form>
         </div>
     </div>
 </div>
