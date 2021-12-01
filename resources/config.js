@@ -3,5 +3,6 @@ rutas = {
     enabled: true,
     admin: 'http://127.0.0.1:8000/admin',
     especializacion: 'http://127.0.0.1:8000/especializacion',
-    usuario: "http://127.0.0.1:8000/usuarios"
+    usuario: "http://127.0.0.1:8000/usuarios",
+    veterinaria: "http://127.0.0.1:8000/veterinaria"
 }

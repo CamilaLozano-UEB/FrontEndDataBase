@@ -57,21 +57,19 @@ $(function () {
         let table = document.getElementById("vetTable");
         const properties = ['username', 'nombres', "apellidos", "num_identificacion", "email", "direccion", "tel_fijo", "tel_celular"]
 
-        if (document.getElementById("tBodyPets") !== null) {
+        if (document.getElementById("tBodyVets") !== null) {
             $('#vetTable').DataTable().destroy();
-            table.removeChild(document.getElementById("tBodyPets"));
+            table.removeChild(document.getElementById("tBodyVets"));
         }
         let tBody = document.createElement("tbody");
-        tBody.id = "tBodyPets";
+        tBody.id = "tBodyVets";
 
         for (let i = 0; i < listaVeterinarios.length; i++) {
             var tr = document.createElement("tr");
             for (const property of properties) {
-                if (property !== "owner_username") {
-                    var td = document.createElement("td");
-                    td.textContent = listaVeterinarios[i][property];
-                    tr.appendChild(td);
-                }
+                var td = document.createElement("td");
+                td.textContent = listaVeterinarios[i][property];
+                tr.appendChild(td);
             }
 
             var deleteTd = document.createElement("td");

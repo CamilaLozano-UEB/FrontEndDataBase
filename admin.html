@@ -38,6 +38,10 @@
             <a class="nav-link" id="petCase-tab" data-toggle="tab" href="#petCase" role="tab" aria-controls="petCase"
                aria-selected="false">Crear Especialización</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="esp-tab" data-toggle="tab" href="#find" role="tab" aria-controls="find"
+               aria-selected="false">Tabla de Mascotas</a>
+        </li>
     </ul>
 </nav>
 
@@ -129,25 +133,36 @@
             </form>
         </div>
     </div>
-    <div class="tab-pane fade" id="find" role="tabpanel" aria-labelledby="find-tab" align="center">
+    <div class="tab-pane fade" id="find" role="tabpanel" aria-labelledby="esp-tab" align="center">
         <div class="configureStyleMainBox">
 
             <!-- Table to shows all the vets for an specific owner -->
-            <h2 class="titles">Tabla de Mascotas del Propietario</h2>
-            <table id="myTableOwner" class="display" style="width:100%">
+            <h2 class="titles">Especializaciones de veterinarios</h2>
+            <form name="formCase" autocomplete="on" id="vetEsp">
+                <fieldset>
+                    <legend>Buscar especializaciones veterinario</legend>
+                    <label for="vetUsername">Username</label><br>
+                    <input id="vetUsername" type="text" name="vetUsername" required>
+                    <br><br>
+                    <p align="center">
+                        <button type="button" id="butEspVet">Buscar</button>
+                    </p>
+                    <legend>Buscar especializaciones veterinario</legend>
+                    <label for="selectEsp">Username</label><br>
+                    <p align="center">
+                        <select id="selectEsp" name="selectEsp" form="vetEsp">
+                        </select>
+                    </p>
+                    <p align="center">
+                        <button type="button" id="butRegistroEsp">Añadir</button>
+                    </p>
+                </fieldset>
+            </form>
+            <table id="especializacionTable" class="display" style="width:100%">
                 <thead>
                 <tr>
-                    <th scope="col">Actualizar</th>
-                    <th scope="col">Crear Caso</th>
-                    <th scope="col">Ver casos y visitas</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">microchip</th>
-                    <th scope="col">nombre</th>
-                    <th scope="col">especie</th>
-                    <th scope="col">raza</th>
-                    <th scope="col">tamaño</th>
-                    <th scope="col">sexo</th>
-                    <th scope="col">imagen</th>
+                    <th scope="col">Especialización</th>
+                    <th scope="col">Eliminar</th>
                 </tr>
                 </thead>
             </table>
