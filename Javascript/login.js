@@ -1,7 +1,10 @@
 $(function (){
+    if (!rutas.enabled) {
+        return;
+    }
+    const url = rutas.admin;
 
     $("#logButton").click(function () {
-        let url = 'http://127.0.0.1:8000/usuarios';
         let username = $("#user").val();
         var password = $("#password").val();
         var encryptedPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
