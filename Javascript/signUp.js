@@ -1,7 +1,11 @@
 $(function () {
+
+    if (!rutas.enabled) {
+        return;
+    }
+    const url = rutas.usuario;
     $("#signButton").click(function () {
 
-        var url = 'http://127.0.0.1:8000/usuarios';
         var password = $("#password").val();
         var encryptedPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
         var tel_fijo = $("#telefono").val();
@@ -41,7 +45,7 @@ $(function () {
                     location.reload();
                 }
             },
-            error: function(err){
+            error: function (err) {
                 alert("Ha acurrido un error al registrarse");
             }
         });

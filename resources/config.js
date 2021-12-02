@@ -8,5 +8,6 @@ rutas = {
     color: "http://127.0.0.1:8000/color",
     categoria: "http://127.0.0.1:8000/categoria",
     especie: "http://127.0.0.1:8000/especie",
-    raza: "http://127.0.0.1:8000/raza"
+    raza: "http://127.0.0.1:8000/raza",
+    producto: "http://127.0.0.1:8000/producto"
 }

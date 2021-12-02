@@ -27,12 +27,11 @@
                aria-controls="register" aria-selected="true">Registrar Veterinario</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="update-tab" data-toggle="tab" href="#update" role="tab" aria-controls="update"
+            <a class="nav-link" id="vet_tab" data-toggle="tab" href="#list" role="tab" aria-controls="list"
                aria-selected="false">Veterinarios</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="petCase-tab" data-toggle="tab" href="#petCase" role="tab" aria-controls="petCase"
-               aria-selected="false">Crear Especialización</a>
+            <a class="nav-link" id="CEsp-tab" data-toggle="tab" href="#CEsp" role="tabpanel" aria-labelledby=role="tabpanel" aria-labelledby=lse">Crear Especialización</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="esp-tab" data-toggle="tab" href="#find" role="tab" aria-controls="find"
@@ -93,10 +92,9 @@
                     <button id="signButton" type="button">Registrar</button>
                 </fieldset>
             </form>
-
         </div>
     </div>
-    <div class="tab-pane fade" id="update" role="tabpanel" aria-labelledby="update-tab" align="center">
+    <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="vet_tab" align="center">
         <div class="configureStyleMainForms">
 
             <h2 class="titles">Veterinarios registrados</h2>
@@ -117,7 +115,7 @@
             </table>
         </div>
     </div>
-    <div class="tab-pane fade" id="petCase" role="tabpanel" aria-labelledby="petCase-tab" align="center">
+    <div class="tab-pane fade" id="CEsp" role="tabpanel" aria-labelledby="CEsp-tab" align="center">
         <div class="configureStyleMainForms">
             <!--Form for the creation of a case -->
             <form name="formCase" autocomplete="on" id="formCase">
@@ -136,7 +134,6 @@
     <div class="tab-pane fade" id="find" role="tabpanel" aria-labelledby="esp-tab" align="center">
         <div class="configureStyleMainBox">
 
-            <!-- Table to shows all the vets for an specific owner -->
             <h2 class="titles">Especializaciones de veterinarios</h2>
             <form name="formCase" autocomplete="on" id="vetEsp">
                 <fieldset>

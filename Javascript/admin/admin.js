@@ -88,7 +88,7 @@ $(function () {
     /**
      * Get the pets of the rest in the backend
      */
-    $("#update-tab").click(function () {
+    $("#vet_tab").click(function () {
         fetch(admin_url, {
             method: 'GET',
         }).then(response => response.json()).then(response => llenarTablaVeterinarios(response));

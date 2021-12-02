@@ -2,7 +2,7 @@ $(function (){
     if (!rutas.enabled) {
         return;
     }
-    const url = rutas.admin;
+    const url = rutas.usuario;
 
     $("#logButton").click(function () {
         let username = $("#user").val();
