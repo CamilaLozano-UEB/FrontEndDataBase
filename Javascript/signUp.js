@@ -5,49 +5,67 @@ $(function () {
     }
     const url = rutas.usuario;
     $("#signButton").click(function () {
-
-        var password = $("#password").val();
+        var username = $("#username").val()
+        var password = $("#password").val()
         var encryptedPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
+        var email = $("#email").val()
+        var num_identificacion = $("#numIdentificacion").val()
+        var nombres = $("#nombres").val()
+        var apellidos = $("#apellidos").val()
+        var direccion = $("#direccion").val()
         var tel_fijo = $("#telefono").val();
         var tel_celular = $("#celular").val();
-
+        if (password.length === 0 || username.length === 0 || email.length === 0 || num_identificacion === 0 ||
+            nombres === 0 || apellidos === 0 || direccion === 0 || tel_fijo === 0 || tel_celular === 0) {
+            alert("Es necesario llenar los campos")
+            return;
+        }
         if (isNaN(Number(tel_celular)) || isNaN(Number(tel_fijo))) {
             alert("Solo ingrese números en los campos de teléfono!")
             return;
         }
+        if (password.length >21){
+            alert("La contraseña excedio el limite de caracteres")
+            return;
+        }
+        if (username.length > 21 || email.length > 41 || num_identificacion >11 || nombres > 51
+            || apellidos > 51 || direccion > 100 || tel_fijo !== 7  || tel_celular !== 10) {
+            alert("Ha excedido el limite de caracteres")
+            return;
+        }
         console.log(password)
         var usuario = {
-            "username": $("#username").val(),
+            "username": username,
             "clave": encryptedPassword,
-            "email": $("#email").val(),
-            "num_identificacion": $("#numIdentificacion").val(),
-            "nombres": $("#nombres").val(),
-            "apellidos": $("#apellidos").val(),
+            "email": email,
+            "num_identificacion": num_identificacion,
+            "nombres": nombres,
+            "apellidos": apellidos,
             "cod_rol": 1,
-            "direccion": $("#direccion").val(),
+            "direccion": direccion,
             "tel_fijo": tel_fijo,
             "tel_celular": tel_celular,
             "est_usuario": "A"
         }
         console.log(usuario);
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: JSON.stringify(usuario),
-            dataType: "json",
-            success: function (data) {
-                console.log(data)
-                if ("se ha registrado correctamente" === data) {
-                    alert(data);
-                    window.location.href = "index.html";
-                } else {
-                    alert(data);
-                    location.reload();
-                }
-            },
-            error: function (err) {
-                alert("Ha acurrido un error al registrarse");
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(usuario), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
             }
-        });
+        }).then(res => res.text()).then(res => validateresponse(res));
     });
+
+    function validateresponse(response) {
+        if ("se ha registrado correctamente" === response) {
+            alert(response);
+            window.location.href = "index.html";
+        } else {
+            alert(response);
+            location.reload();
+        }
+
+    }
+
 });
