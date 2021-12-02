@@ -1,5 +1,7 @@
 $(function () {
 
+    validarUsuario();
+
     if (!rutas.enabled) {
         return;
     }
@@ -36,4 +38,27 @@ $(function () {
             }
         });
     });
+
+    function validarUsuario() {
+        var username = atob(localStorage.getItem("username"));
+        var password = atob(localStorage.getItem("password"));
+        let headers = new Headers();
+
+        headers.append('Content-Type', 'text/json');
+        headers.append('Authorization', "Basic " + btoa(username + ":" + password));
+
+        fetch(rutas.usuario, {
+            method: 'GET',
+            headers: headers,
+        })
+            .then(response => response.text())
+            .then(response => validarRol(response.toString().replaceAll("\"", "")));
+    }
+
+    function validarRol(rol) {
+        if (rol !== "veterinario") {
+            alert("Este usuario no tiene permisos de veterinario!")
+            window.location.href = "index.html"
+        }
+    }
 });

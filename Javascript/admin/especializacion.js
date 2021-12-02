@@ -48,6 +48,12 @@ $(function () {
             alert("No hay registros de especializaciones!")
             return;
         }
+
+        if (listaEspecializaciones === "No existe un veterinario con ese username") {
+            alert("No existe un veterinario con ese username!")
+            return;
+        }
+
         let table = document.getElementById("especializacionTable");
         if (document.getElementById("tBodyEsp") !== null) {
             $('#especializacionTable').DataTable().destroy();
@@ -99,9 +105,6 @@ $(function () {
         alert(response)
     }
 
-    /**
-     * Get the pets of the rest in the backend
-     */
     $("#butEspVet").click(function () {
         var vetUsername = $("#vetUsername").val();
         if (vetUsername.length === 0) {

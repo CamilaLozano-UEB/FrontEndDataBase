@@ -9,5 +9,6 @@ rutas = {
     categoria: "http://127.0.0.1:8000/categoria",
     especie: "http://127.0.0.1:8000/especie",
     raza: "http://127.0.0.1:8000/raza",
-    producto: "http://127.0.0.1:8000/producto"
+    producto: "http://127.0.0.1:8000/producto",
+    mascotas: "http://127.0.0.1:8000/mascotas"
 }

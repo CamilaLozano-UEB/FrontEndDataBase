@@ -33,7 +33,6 @@ $(function () {
             alert("Ha excedido el limite de caracteres")
             return;
         }
-        console.log(password)
         var usuario = {
             "username": username,
             "clave": encryptedPassword,
@@ -47,7 +46,6 @@ $(function () {
             "tel_celular": tel_celular,
             "est_usuario": "A"
         }
-        console.log(usuario);
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(usuario), // data can be `string` or {object}!
